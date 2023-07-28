@@ -1,8 +1,8 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
-    databaseURL: "https://realtimedb-d3b7c-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    databaseURL: "https://realtimedb-d3b7c-default-rtdb.asia-southeast1.firebasedatabase.app"
 }
 
 const app = initializeApp(appSettings)
@@ -50,6 +50,15 @@ function appendItemToShoppingListEl(item) {
     let newEl = document.createElement("li")
     
     newEl.textContent = itemValue
+    
+    // Challenge: Attach an event listener to newEl and make it so you console log the id of the item when it's pressed.
+    newEl.addEventListener("click", function() {
+        // Challenge: Make a let variable called 'exactLocationOfItemInDB' and set it equal to ref(database, something) where you substitute something with the code that will give you the exact location of the item in question.
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+        
+        // Challenge: Use the remove function to remove the item from the database
+        remove(exactLocationOfItemInDB)
+    })
     
     shoppingListEl.append(newEl)
 }
