@@ -22,18 +22,24 @@ addButtonEl.addEventListener("click", function() {
 })
 
 onValue(shoppingListInDB, function(snapshot) {
-    let itemsArray = Object.entries(snapshot.val())
+    // Challenge: Change the onValue code so that it uses snapshot.exists() to show items when there are items in the database and if there are not displays the text 'No items here... yet'.
     
-    clearShoppingListEl()
-    
-    for (let i = 0; i < itemsArray.length; i++) {
-        let currentItem = itemsArray[i]
-        let currentItemID = currentItem[0]
-        let currentItemValue = currentItem[1]
+    if(snapshot.exists()) {
+        let itemsArray = Object.entries(snapshot.val())
+        clearShoppingListEl()
         
-        appendItemToShoppingListEl(currentItem)
-    }
-})
+        for (let i = 0; i < itemsArray.length; i++) {
+            let currentItem = itemsArray[i]
+            let currentItemID = currentItem[0]
+            let currentItemValue = currentItem[1]
+            
+            appendItemToShoppingListEl(currentItem)  
+        }  
+        
+        } else {
+            shoppingListEl.innerHTML = 'No items here... yet' 
+        }
+    })
 
 function clearShoppingListEl() {
     shoppingListEl.innerHTML = ""
@@ -51,12 +57,9 @@ function appendItemToShoppingListEl(item) {
     
     newEl.textContent = itemValue
     
-    // Challenge: Attach an event listener to newEl and make it so you console log the id of the item when it's pressed.
     newEl.addEventListener("click", function() {
-        // Challenge: Make a let variable called 'exactLocationOfItemInDB' and set it equal to ref(database, something) where you substitute something with the code that will give you the exact location of the item in question.
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
         
-        // Challenge: Use the remove function to remove the item from the database
         remove(exactLocationOfItemInDB)
     })
     
