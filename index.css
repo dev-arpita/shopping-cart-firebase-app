@@ -1,11 +1,3 @@
-/*
-ADD TO CART BUTTON
-background-color: #432000;
-
-ITEM BUTTONS
-background-color: #FFECC7;
-*/
-
 html,
 body {
     margin: 0;
@@ -24,9 +16,9 @@ body {
     margin: 0 auto;
     background-image: url("https://static.vecteezy.com/system/resources/previews/023/809/604/original/seamless-pattern-cat-faces-and-paw-prints-on-a-white-background-print-background-children-s-textile-wallpaper-vector.jpg");
     background-size: cover;
-        background-repeat: no-repeat;
-        height: 100%;
-        padding: 32px 16px;
+    background-repeat: no-repeat;
+    height: 100%;
+    padding: 32px;
 }
 
 img {
@@ -42,7 +34,6 @@ input {
     border-radius: 8px;
     font-size: 20px;
     text-align: center;
-    /* font-family: 'Rubik', sans-serif; */
     font-family: 'Ubuntu', sans-serif;
     margin: 15px 0;
 }
@@ -55,7 +46,6 @@ button {
     border-radius: 8px;
     font-size: 20px;
     text-align: center;
-    /* font-family: 'Rubik', sans-serif; */
     font-family: 'Ubuntu', sans-serif;
     font-weight: 900;
 }
